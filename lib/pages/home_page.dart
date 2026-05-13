@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
         likeCount: 100,
         downloadCount: 350,
         description: 'Ruby ore 3d model.',
-        imagePath: 'assets/ruby.png',
+        imagePath: 'assets/ruby.jpeg',
         modelPath: 'assets/ruby.glb',
       ),
       AssetModel(
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
         likeCount: 100,
         downloadCount: 350,
         description: 'Gold ore 3d model.',
-        imagePath: 'assets/gold.png',
+        imagePath: 'assets/gold.jpeg',
         modelPath: 'assets/gold.glb',
       ),
       AssetModel(
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
         likeCount: 100,
         downloadCount: 350,
         description: 'Iron ore 3d model.',
-        imagePath: 'assets/iron.png',
+        imagePath: 'assets/iron.jpeg',
         modelPath: 'assets/iron.glb',
       ),
       AssetModel(
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
         likeCount: 100,
         downloadCount: 350,
         description: 'Glass 3d model.',
-        imagePath: 'assets/glass.png',
+        imagePath: 'assets/glas.png',
         modelPath: 'assets/glass.glb',
       ),
       AssetModel(
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
         likeCount: 100,
         downloadCount: 350,
         description: 'Sword 3d model.',
-        imagePath: 'assets/sword.png',
+        imagePath: 'assets/sword.jpeg',
         modelPath: 'assets/sword.glb',
       ),
     ];
@@ -198,8 +198,13 @@ class HomePage extends StatelessWidget {
                 child: Container(
                   color: Colors.grey[800], // Background untuk gambar placeholder
                   width: double.infinity,
-                  // Menggunakan icon sebagai placeholder jika gambar belum ada
-                  child: const Icon(Icons.image, color: Colors.grey, size: 40),
+                  child: Image.asset(
+                    asset.imagePath,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.image, color: Colors.grey, size: 40);
+                    },
+                  ),
                 ),
               ),
             ),
