@@ -75,6 +75,52 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
 
+          // Product Info
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      asset.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildStatItem(Icons.folder_outlined, asset.fileSize),
+                        _buildStatItem(Icons.favorite_border, '${asset.likeCount}'),
+                        _buildStatItem(Icons.download_outlined, '${asset.downloadCount}'),
+                      ],
+                    ),
+                    const SizedBox(height: 32),
+                    const Text(
+                      'Description',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      asset.description,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                        height: 1.5,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
 
           ],
         ),
