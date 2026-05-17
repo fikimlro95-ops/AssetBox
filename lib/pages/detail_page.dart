@@ -16,6 +16,44 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   bool _isDownloading = false;
 
+//logika tombol download
+Future<void> _downloadAsset(String url, String fileName) async {
+    setState(() {
+      _isDownloading = true;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Mengunduh aset...")),
+    );
+
+    try {
+      final dio = Dio();
+      final dir = await getApplicationDocumentsDirectory();
+      // Remove spaces or invalid chars from filename
+      final sanitizedFileName = fileName.replaceAll(' ', '_');
+      final filePath = '${dir.path}/$sanitizedFileName.glb';
+
+      await dio.download(url, filePath);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Aset berhasil diunduh!")),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Gagal mengunduh: $e")),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isDownloading = false;
+        });
+      }
+    }
+  }
 
 
    @override
