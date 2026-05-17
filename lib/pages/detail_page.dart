@@ -122,9 +122,52 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
 
+          // Action Button Download
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton.icon(
+                  onPressed: _isDownloading ? null : () => _downloadAsset(asset.modelPath, asset.name),
+                  icon: _isDownloading
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                        )
+                      : const Icon(Icons.arrow_downward, color: Colors.white),
+                  label: Text(
+                    _isDownloading ? "DOWNLOADING..." : "DOWNLOAD",
+                    style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1E1E1E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: const BorderSide(color: Colors.grey, width: 0.5),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
     );
+
+      Widget _buildStatItem(IconData icon, String label) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.white, size: 24),
+        const SizedBox(width: 8),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+      ],
+    );
+  }
 
 }
