@@ -65,8 +65,8 @@ class HomePage extends StatelessWidget {
         fileSize: '3Mb',
         likeCount: 100,
         downloadCount: 350,
-        description: 'Sword 3d model.',
-        imagePath: 'Low poly 3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
+        description: 'Low poly 3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
+        imagePath: 'assets/sword.jpeg',
         modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/swordd.glb',
       ),
     ];
