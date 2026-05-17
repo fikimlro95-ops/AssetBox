@@ -15,9 +15,9 @@ class HomePage extends StatelessWidget {
         fileSize: '10Mb',
         likeCount: 100,
         downloadCount: 350,
-        description: 'Diamond ore 3d model.',
+        description: 'Low poly 3D diamond ore asset dengan desain sederhana namun tetap detail. Cocok digunakan untuk game survival, mining, crafting, RPG, maupun sandbox. Memiliki tampilan batu dengan kristal diamond berwarna biru yang memberikan kesan clean dan stylized.',
         imagePath: 'assets/diamond.png',
-        modelPath: 'assets/diamond.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/Diamond.glb',
       ),
       AssetModel(
         id: '2',
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         downloadCount: 350,
         description: 'Ruby ore 3d model.',
         imagePath: 'assets/ruby.jpeg',
-        modelPath: 'assets/ruby.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/ruby.glb',
       ),
       AssetModel(
         id: '3',
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
         downloadCount: 350,
         description: 'Gold ore 3d model.',
         imagePath: 'assets/gold.jpeg',
-        modelPath: 'assets/gold.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/gold.glb',
       ),
       AssetModel(
         id: '4',
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         downloadCount: 350,
         description: 'Iron ore 3d model.',
         imagePath: 'assets/iron.jpeg',
-        modelPath: 'assets/iron.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/iron.glb',
       ),
       AssetModel(
         id: '5',
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
         downloadCount: 350,
         description: 'Glass 3d model.',
         imagePath: 'assets/glas.png',
-        modelPath: 'assets/glass.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/glass.glb',
       ),
       AssetModel(
         id: '6',
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
         downloadCount: 350,
         description: 'Sword 3d model.',
         imagePath: 'assets/sword.jpeg',
-        modelPath: 'assets/sword.glb',
+        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/swordd.glb',
       ),
     ];
 
@@ -182,7 +182,7 @@ class HomePage extends StatelessWidget {
   Widget _buildAssetCard(BuildContext context, AssetModel asset) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail');
+        Navigator.pushNamed(context, '/detail', arguments: asset);
       },
       child: Container(
         decoration: BoxDecoration(
