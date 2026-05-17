@@ -51,10 +51,29 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),   
 
+                // Header 
+                  Positioned(
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back, color: Colors.white),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.favorite_border, color: Colors.white),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+
                 ],
               ),
             ),
-
 
 
           ],
