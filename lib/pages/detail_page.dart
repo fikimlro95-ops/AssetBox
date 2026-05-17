@@ -66,7 +66,7 @@ Future<void> _downloadAsset(String url, String fileName) async {
         body: Center(child: Text("Asset not found", style: TextStyle(color: Colors.white))),
       );
     }
-  }
+  
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -194,6 +194,7 @@ Future<void> _downloadAsset(String url, String fileName) async {
         ),
       ),
     );
+  }
 
       Widget _buildStatItem(IconData icon, String label) {
     return Row(
