@@ -13,3 +13,53 @@ class DetailPage extends StatefulWidget {
 }
 
 
+class _DetailPageState extends State<DetailPage> {
+  bool _isDownloading = false;
+
+
+
+   @override
+  Widget build(BuildContext context) {
+    final asset = ModalRoute.of(context)?.settings.arguments as AssetModel?;
+
+    if (asset == null) {
+      return const Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(child: Text("Asset not found", style: TextStyle(color: Colors.white))),
+      );
+    }
+  }
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Column(
+          children: [
+
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Stack(
+                children: [
+                // 3D Viewer
+                  Positioned.fill(
+                    child: ModelViewer(
+                      backgroundColor: Colors.black,
+                      src: asset.modelPath,
+                      alt: "A 3D model of ${asset.name}",
+                      autoRotate: true,
+                      cameraControls: true,
+                    ),
+                  ),   
+
+                ],
+              ),
+            ),
+
+
+
+          ],
+        ),
+      ),
+    );
+
+}
