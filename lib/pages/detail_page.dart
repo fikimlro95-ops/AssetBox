@@ -61,16 +61,22 @@ Future<void> _downloadAsset(String url, String fileName) async {
     final asset = ModalRoute.of(context)?.settings.arguments as AssetModel?;
 
     if (asset == null) {
-      return const Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(child: Text("Asset not found", style: TextStyle(color: Colors.white))),
+       return Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Center(
+          child: Text(
+            "Asset not found",
+            style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
+          ),
+        ),
       );
     }
   
     final isFavorited = favoriteAssets.any((a) => a.id == asset.id);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -82,7 +88,7 @@ Future<void> _downloadAsset(String url, String fileName) async {
                 // 3D Viewer
                   Positioned.fill(
                     child: ModelViewer(
-                      backgroundColor: Colors.black,
+                     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                       src: asset.modelPath,
                       alt: "A 3D model of ${asset.name}",
                       autoRotate: true,
@@ -99,13 +105,13 @@ Future<void> _downloadAsset(String url, String fileName) async {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back, color: Colors.white),
+                          icon: Icon(Icons.arrow_back, color: Theme.of(context).iconTheme.color),
                           onPressed: () => Navigator.pop(context),
                         ),
                         IconButton(
                           icon: Icon(
                             isFavorited ? Icons.favorite : Icons.favorite_border,
-                            color: isFavorited ? Colors.red : Colors.white,
+                            color: isFavorited ? Colors.red : Theme.of(context).iconTheme.color,
                           ),
                           onPressed: () {
                             setState(() {
@@ -146,8 +152,8 @@ Future<void> _downloadAsset(String url, String fileName) async {
                   children: [
                     Text(
                       asset.name,
-                      style: const TextStyle(
-                        color: Colors.white,
+                        style: TextStyle(
+                        color: Theme.of(context).textTheme.bodyLarge?.color,
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -156,16 +162,16 @@ Future<void> _downloadAsset(String url, String fileName) async {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _buildStatItem(Icons.folder_outlined, asset.fileSize),
-                        _buildStatItem(Icons.favorite_border, '${asset.likeCount}'),
-                        _buildStatItem(Icons.download_outlined, '${asset.downloadCount}'),
+                        _buildStatItem(context, Icons.folder_outlined, asset.fileSize),
+                        _buildStatItem(context, Icons.favorite_border, '${asset.likeCount}'),
+                        _buildStatItem(context, Icons.download_outlined, '${asset.downloadCount}'),
                       ],
                     ),
                     const SizedBox(height: 32),
-                    const Text(
+                    Text(
                       'Description',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Theme.of(context).textTheme.bodyLarge?.color,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -204,10 +210,11 @@ Future<void> _downloadAsset(String url, String fileName) async {
                     style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1E1E1E),
+                    backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.black,
+                    foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
-                      side: const BorderSide(color: Colors.grey, width: 0.5),
+                       side: BorderSide(color: isDark ? Colors.grey : Colors.grey[700]!, width: 0.5),
                     ),
                   ),
                 ),
@@ -220,14 +227,18 @@ Future<void> _downloadAsset(String url, String fileName) async {
     );
   }
 
-      Widget _buildStatItem(IconData icon, String label) {
+    Widget _buildStatItem(BuildContext context, IconData icon, String label) {
     return Row(
       children: [
-        Icon(icon, color: Colors.white, size: 24),
+         Icon(icon, color: Theme.of(context).iconTheme.color, size: 24),
         const SizedBox(width: 8),
         Text(
           label,
-          style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyLarge?.color,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     );
