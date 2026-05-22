@@ -9,6 +9,12 @@ class AssetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBgColor = isDark ? const Color(0xFF1E1E1E) : Colors.grey[100];
+    final placeholderColor = isDark ? Colors.grey[800] : Colors.grey[300];
+    final titleColor = Theme.of(context).textTheme.bodyLarge?.color;
+
     return GestureDetector(
       onTap: () async {
         await Navigator.pushNamed(context, '/detail', arguments: asset);
@@ -18,7 +24,7 @@ class AssetCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E),
+           color: cardBgColor,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -28,7 +34,7 @@ class AssetCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Container(
-                  color: Colors.grey[800], // Background untuk gambar placeholder
+                  color: placeholderColor,
                   width: double.infinity,
                   child: Image.asset(
                     asset.imagePath,
@@ -47,8 +53,8 @@ class AssetCard extends StatelessWidget {
                 children: [
                   Text(
                     asset.name,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: titleColor,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -59,9 +65,9 @@ class AssetCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStatIcon(Icons.folder_outlined, asset.fileSize),
-                      _buildStatIcon(Icons.favorite_border, '${asset.likeCount}'),
-                      _buildStatIcon(Icons.download_outlined, '${asset.downloadCount}'),
+                      _buildStatIcon(context, Icons.folder_outlined, asset.fileSize),
+                      _buildStatIcon(context, Icons.favorite_border, '${asset.likeCount}'),
+                      _buildStatIcon(context, Icons.download_outlined, '${asset.downloadCount}'),
                     ],
                   ),
                 ],
@@ -73,14 +79,16 @@ class AssetCard extends StatelessWidget {
     );
   }
 
-  Widget _buildStatIcon(IconData icon, String label) {
+ Widget _buildStatIcon(BuildContext context, IconData icon, String label) {
+
+ final color = Theme.of(context).brightness == Brightness.dark ? Colors.white70 : Colors.black87;
     return Column(
       children: [
-        Icon(icon, color: Colors.white, size: 16),
+       Icon(icon, color: color, size: 16),
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(color: Colors.white, fontSize: 10),
+         style: TextStyle(color: color, fontSize: 10),
         ),
       ],
     );
