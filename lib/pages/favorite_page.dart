@@ -15,19 +15,19 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
      return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Stack(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 24.0, top: 24.0, bottom: 16.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 24.0, top: 24.0, bottom: 16.0),
                   child: Text(
                     'Favorit',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
