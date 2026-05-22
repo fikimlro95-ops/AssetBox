@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/asset_model.dart';
 import '../widgets/floating_nav_bar.dart';
+import '../widgets/asset_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -72,7 +73,7 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -80,7 +81,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildHeader(context),
-                _buildSearchBar(),
+                _buildSearchBar(context),
                 Expanded(
                   child: GridView.builder(
                     // Memberikan padding bawah yang cukup agar tidak tertutup nav bar
@@ -93,7 +94,7 @@ class HomePage extends StatelessWidget {
                     ),
                     itemCount: assets.length,
                     itemBuilder: (context, index) {
-                      return _buildAssetCard(context, assets[index]);
+                       return AssetCard(asset: assets[index]);
                     },
                   ),
                 ),
@@ -110,29 +111,31 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildHeader(BuildContext context) {
+    final textColor = Theme.of(context).textTheme.bodyLarge?.color;
+    final iconColor = Theme.of(context).iconTheme.color;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'AssetBox',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: textColor,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   'Discover Modern\nFurniture and Dev asset',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: textColor,
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
                   ),
@@ -141,7 +144,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.notifications_none, color: Colors.white, size: 28),
+           icon: Icon(Icons.notifications_none, color: iconColor, size: 28),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -156,18 +159,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchBar() {
+  Widget _buildSearchBar(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final searchBgColor = isDark ? const Color(0xFF1E1E1E) : Colors.grey[200];
+    final textColor = Theme.of(context).textTheme.bodyLarge?.color;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E),
+          color: searchBgColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const TextField(
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
+       child: TextField(
+          style: TextStyle(color: textColor),
+          decoration: const InputDecoration(
             hintText: 'Cari 3D Mu',
             hintStyle: TextStyle(color: Colors.grey),
             prefixIcon: Icon(Icons.search, color: Colors.grey),
