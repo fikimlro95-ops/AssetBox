@@ -39,7 +39,7 @@ class FloatingNavBar extends StatelessWidget {
               label: 'Setting',
               isSelected: selectedIndex == 2,
               onTap: () {
-                 if (selectedIndex != 2) Navigator.pushReplacementNamed(context, '/setting');
+                if (selectedIndex != 2) Navigator.pushReplacementNamed(context, '/setting');
               },
             ),
           ],
