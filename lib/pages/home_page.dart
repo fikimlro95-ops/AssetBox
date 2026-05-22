@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
             ),
             const Align(
               alignment: Alignment.bottomCenter,
-              child: FloatingNavBar(currentIndex: 0),
+              child: FloatingNavBar(selectedIndex: 0),
             ),
           ],
         ),
