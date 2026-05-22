@@ -19,3 +19,5 @@ class AssetModel {
     required this.modelPath,
   });
 }
+
+List<AssetModel> favoriteAssets = [];
