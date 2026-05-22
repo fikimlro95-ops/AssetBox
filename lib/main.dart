@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'theme/app_theme.dart';
 import 'pages/detail_page.dart';
+import 'pages/favorite_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/detail': (context) => const DetailPage(),
+        '/favorite': (context) => const FavoritePage(),
         
       },
       debugShowCheckedModeBanner: false,
