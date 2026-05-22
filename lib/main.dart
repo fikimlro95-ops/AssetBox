@@ -5,6 +5,8 @@ import 'pages/detail_page.dart';
 import 'pages/favorite_page.dart';
 import 'pages/setting_page.dart';
 
+final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.dark);
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,18 +16,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AssetBox',
-      theme: AppTheme.darkTheme,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        '/detail': (context) => const DetailPage(),
-        '/favorite': (context) => const FavoritePage(),
-         '/setting': (context) => const SettingPage(),
-        
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (context, currentMode, child) {
+        return MaterialApp(
+          title: 'AssetBox',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: currentMode,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const HomePage(),
+            '/detail': (context) => const DetailPage(),
+            '/favorite': (context) => const FavoritePage(),
+            '/setting': (context) => const SettingPage(),
+           
+          },
+          debugShowCheckedModeBanner: false,
+        );
       },
-      debugShowCheckedModeBanner: false,
     );
   }
 }
