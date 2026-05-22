@@ -3,10 +3,11 @@ import '../widgets/floating_nav_bar.dart';
 import '../models/asset_model.dart';
 import '../widgets/asset_card.dart';
 
-class FavoritePage extends StatelessWidget {
+class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
 
-   State<FavoritePage> createState() => _FavoritePageState();
+  @override
+  State<FavoritePage> createState() => _FavoritePageState();
 }
 
 class _FavoritePageState extends State<FavoritePage> {

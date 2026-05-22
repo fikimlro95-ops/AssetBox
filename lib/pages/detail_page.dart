@@ -67,6 +67,7 @@ Future<void> _downloadAsset(String url, String fileName) async {
       );
     }
   
+    final isFavorited = favoriteAssets.any((a) => a.id == asset.id);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -102,8 +103,31 @@ Future<void> _downloadAsset(String url, String fileName) async {
                           onPressed: () => Navigator.pop(context),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.favorite_border, color: Colors.white),
-                          onPressed: () {},
+                          icon: Icon(
+                            isFavorited ? Icons.favorite : Icons.favorite_border,
+                            color: isFavorited ? Colors.red : Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (isFavorited) {
+                                favoriteAssets.removeWhere((a) => a.id == asset.id);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("Dihapus dari Favorit"),
+                                    behavior: SnackBarBehavior.floating,
+                                  ),
+                                );
+                              } else {
+                                favoriteAssets.add(asset);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("Berhasil ditambahkan ke Favorit"),
+                                    behavior: SnackBarBehavior.floating,
+                                  ),
+                                );
+                              }
+                            });
+                          },
                         ),
                       ],
                     ),

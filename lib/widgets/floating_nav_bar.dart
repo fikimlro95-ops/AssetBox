@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FloatingNavBar extends StatelessWidget {
-  final int currentIndex;
+  final int selectedIndex;
 
-  const FloatingNavBar({super.key, this.currentIndex = 0});
+  const FloatingNavBar({super.key, this.selectedIndex = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +21,17 @@ class FloatingNavBar extends StatelessWidget {
             _buildNavItem(
               icon: Icons.home_outlined,
               label: 'Home',
-              isSelected: currentIndex == 0,
+              isSelected: selectedIndex == 0,
               onTap: () {
-                if (currentIndex != 0) Navigator.pushReplacementNamed(context, '/');
+                  if (selectedIndex != 0) Navigator.pushReplacementNamed(context, '/');
               },
             ),
             _buildNavItem(
               icon: Icons.favorite_border,
               label: 'Like',
-              isSelected: currentIndex == 1,
+              isSelected: selectedIndex == 1,
               onTap: () {
-                if (currentIndex != 1) Navigator.pushReplacementNamed(context, '/favorite');
+                 if (selectedIndex != 1) Navigator.pushReplacementNamed(context, '/favorite');
               },
             ),
             _buildNavItem(
