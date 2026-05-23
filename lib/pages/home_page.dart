@@ -136,8 +136,7 @@ class HomePage extends StatelessWidget {
                   'Discover Modern\nFurniture and Dev asset',
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
                   ),
                 ),
               ],
@@ -171,9 +170,9 @@ class HomePage extends StatelessWidget {
           color: searchBgColor,
           borderRadius: BorderRadius.circular(25),
         ),
-       child: TextField(
-          style: TextStyle(color: textColor),
-          decoration: const InputDecoration(
+        child: const TextField(
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
             hintText: 'Cari 3D Mu',
             hintStyle: TextStyle(color: Colors.grey),
             prefixIcon: Icon(Icons.search, color: Colors.grey),
