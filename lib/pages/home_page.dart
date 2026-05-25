@@ -3,75 +3,104 @@ import '../models/asset_model.dart';
 import '../widgets/floating_nav_bar.dart';
 import '../widgets/asset_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Dummy Data
-    final List<AssetModel> assets = [
-      AssetModel(
-        id: '1',
-        name: 'Ore Diamond',
-        fileSize: '4Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Low poly 3D diamond ore asset dengan desain sederhana namun tetap detail. Cocok digunakan untuk game survival, mining, crafting, RPG, maupun sandbox. Memiliki tampilan batu dengan kristal diamond berwarna biru yang memberikan kesan clean dan stylized.',
-        imagePath: 'assets/diamond.png',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/Diamond.glb',
-      ),
-      AssetModel(
-        id: '2',
-        name: 'Ore Ruby',
-        fileSize: '4Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Low poly 3D ruby ore dengan nuansa fantasy dan stylized. Didesain untuk kebutuhan game bertema petualangan, mining, atau resource collection. Memiliki detail batu dengan kristal ruby merah yang menonjol dan mudah dikenali pemain.',
-        imagePath: 'assets/ruby.jpeg',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/ruby.glb',
-      ),
-      AssetModel(
-        id: '3',
-        name: 'Ore Gold',
-        fileSize: '1Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Aset gold ore low poly 3D yang cocok digunakan pada game survival, medieval, maupun sandbox. Memiliki tampilan batu dengan elemen emas yang sederhana namun tetap menarik untuk kebutuhan environment dan resource game.',
-        imagePath: 'assets/gold.jpeg',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/gold.glb',
-      ),
-      AssetModel(
-        id: '4',
-        name: 'Ore Iron',
-        fileSize: '1Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Low poly 3D iron ore asset dengan desain minimalis dan optimal untuk berbagai jenis game. Cocok digunakan sebagai material tambang pada game crafting, survival, atau RPG. Memiliki detail batu dan logam besi yang stylized.',
-        imagePath: 'assets/iron.jpeg',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/iron.glb',
-      ),
-      AssetModel(
-        id: '5',
-        name: 'Glas',
-        fileSize: '2Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Aset glass low poly 3D dengan tampilan sederhana dan clean. Cocok digunakan sebagai dekorasi, building material, atau properti environment pada game stylized maupun low poly. Desain ringan dan mudah dipadukan dengan berbagai tema game.',
-        imagePath: 'assets/glas.png',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/glass.glb',
-      ),
-      AssetModel(
-        id: '6',
-        name: 'Sword',
-        fileSize: '3Mb',
-        likeCount: 100,
-        downloadCount: 350,
-        description: 'Low poly 3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
-        imagePath: 'assets/sword.jpeg',
-        modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/swordd.glb',
-      ),
-    ];
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  // Dummy Data
+  final List<AssetModel> dummyAssets = [
+    AssetModel(
+      id: '1',
+      name: 'Ore Diamond',
+      fileSize: '4Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Low poly 3D diamond ore asset dengan desain sederhana namun tetap detail. Cocok digunakan untuk game survival, mining, crafting, RPG, maupun sandbox. Memiliki tampilan batu dengan kristal diamond berwarna biru yang memberikan kesan clean dan stylized.',
+      imagePath: 'assets/diamond.png',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/Diamond.glb',
+    ),
+    AssetModel(
+      id: '2',
+      name: 'Ore Ruby',
+      fileSize: '4Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Low poly 3D ruby ore dengan nuansa fantasy dan stylized. Didesain untuk kebutuhan game bertema petualangan, mining, atau resource collection. Memiliki detail batu dengan kristal ruby merah yang menonjol dan mudah dikenali pemain.',
+      imagePath: 'assets/ruby.jpeg',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/ruby.glb',
+    ),
+    AssetModel(
+      id: '3',
+      name: 'Ore Gold',
+      fileSize: '1Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Aset gold ore low poly 3D yang cocok digunakan pada game survival, medieval, maupun sandbox. Memiliki tampilan batu dengan elemen emas yang sederhana namun tetap menarik untuk kebutuhan environment dan resource game.',
+      imagePath: 'assets/gold.jpeg',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/gold.glb',
+    ),
+    AssetModel(
+      id: '4',
+      name: 'Ore Iron',
+      fileSize: '1Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Low poly 3D iron ore asset dengan desain minimalis dan optimal untuk berbagai jenis game. Cocok digunakan sebagai material tambang pada game crafting, survival, atau RPG. Memiliki detail batu dan logam besi yang stylized.',
+      imagePath: 'assets/iron.jpeg',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/iron.glb',
+    ),
+    AssetModel(
+      id: '5',
+      name: 'Glas',
+      fileSize: '2Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Aset glass low poly 3D dengan tampilan sederhana dan clean. Cocok digunakan sebagai dekorasi, building material, atau properti environment pada game stylized maupun low poly. Desain ringan dan mudah dipadukan dengan berbagai tema game.',
+      imagePath: 'assets/glas.png',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/glass.glb',
+    ),
+    AssetModel(
+      id: '6',
+      name: 'Sword',
+      fileSize: '3Mb',
+      likeCount: 100,
+      downloadCount: 350,
+      description: 'Low poly 3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
+      imagePath: 'assets/sword.jpeg',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/swordd.glb',
+    ),
+  ];
+
+  List<AssetModel> displayedAssets = [];
+
+  @override
+  void initState() {
+    super.initState();
+    displayedAssets = dummyAssets;
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<AssetModel> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = dummyAssets;
+    } else {
+      results = dummyAssets
+          .where((asset) =>
+              asset.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      displayedAssets = results;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -92,9 +121,9 @@ class HomePage extends StatelessWidget {
                       mainAxisSpacing: 16,
                       childAspectRatio: 0.80,
                     ),
-                    itemCount: assets.length,
+                    itemCount: displayedAssets.length,
                     itemBuilder: (context, index) {
-                       return AssetCard(asset: assets[index]);
+                       return AssetCard(asset: displayedAssets[index]);
                     },
                   ),
                 ),
@@ -170,9 +199,10 @@ class HomePage extends StatelessWidget {
           color: searchBgColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const TextField(
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
+        child: TextField(
+          onChanged: (value) => _runFilter(value),
+          style: TextStyle(color: textColor),
+          decoration: const InputDecoration(
             hintText: 'Cari 3D Mu',
             hintStyle: TextStyle(color: Colors.grey),
             prefixIcon: Icon(Icons.search, color: Colors.grey),
@@ -184,78 +214,4 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildAssetCard(BuildContext context, AssetModel asset) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/detail', arguments: asset);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                child: Container(
-                  color: Colors.grey[800], // Background untuk gambar placeholder
-                  width: double.infinity,
-                  child: Image.asset(
-                    asset.imagePath,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons.image, color: Colors.grey, size: 40);
-                    },
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    asset.name,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildStatIcon(Icons.folder_outlined, asset.fileSize),
-                      _buildStatIcon(Icons.favorite_border, '${asset.likeCount}'),
-                      _buildStatIcon(Icons.download_outlined, '${asset.downloadCount}'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatIcon(IconData icon, String label) {
-    return Column(
-      children: [
-        Icon(icon, color: Colors.white, size: 16),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white, fontSize: 10),
-        ),
-      ],
-    );
-  }
 }
