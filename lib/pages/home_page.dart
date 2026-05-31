@@ -69,9 +69,31 @@ class _HomePageState extends State<HomePage> {
       fileSize: '3Mb',
       likeCount: 100,
       downloadCount: 350,
-      description: 'Low poly 3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
+      description: '3D sword dengan desain stylized dan sederhana. Cocok digunakan untuk game RPG, adventure, fantasy, maupun survival. Memiliki bentuk pedang yang clean dengan detail ringan sehingga tetap optimal digunakan dalam game development.',
       imagePath: 'assets/sword.jpeg',
       modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/swordd.glb',
+    ),
+
+     AssetModel(
+      id: '7',
+      name: 'Hook',
+      fileSize: '43Mb',
+      likeCount: 10,
+      downloadCount: 350,
+      description: '3D hook asset dengan desain detail dan clean, cocok digunakan untuk game survival, pirate, adventure, maupun crafting. Memiliki bentuk realistis dengan tampilan yang fleksibel untuk berbagai kebutuhan environment, equipment, atau decorative props dalam game development.',
+      imagePath: 'assets/hook.png',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/medel%202/hook.glb',
+    ),
+
+     AssetModel(
+      id: '8',
+      name: 'Kunai',
+      fileSize: '3Mb',
+      likeCount: 10,
+      downloadCount: 35,
+      description: '3D kunai asset dengan desain tajam dan modern, cocok digunakan untuk game action, ninja, RPG, maupun fantasy. Memiliki detail yang clean dan tampilan menarik sehingga cocok digunakan sebagai weapon prop atau collectible item dalam berbagai jenis game.',
+      imagePath: 'assets/kunai.png',
+      modelPath: 'https://knarlhnshzucrbggspqh.supabase.co/storage/v1/object/public/model/kunai.compressed%20(1).glb',
     ),
   ];
 
